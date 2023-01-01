@@ -23,5 +23,12 @@ static int compare(const void *lhs, const void *rhs) {
 }
 
 void solution(std::array<S, N> &arr) {
+#ifdef SOLUTION
+  std::sort(arr.begin(), arr.end(),
+    [](const S& lhs, const S& rhs){
+      return compare(&lhs, &rhs) == -1;
+    });
+#else
   qsort(arr.data(), arr.size(), sizeof(S), compare);
+#endif
 }
